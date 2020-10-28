@@ -9,6 +9,12 @@ RSpec.describe Board do
     [0, 1, 1, 1]
   ]
 
+  small_seed = [
+    [1, 0, 0],
+    [0, 1, 1],
+    [0, 0, 1],
+  ]
+
   board = Board.new(seed)
 
   it 'Should generate an instance of the board class' do
@@ -28,6 +34,25 @@ RSpec.describe Board do
       expect(board.grid.all? do |sub_array|
         sub_array.all? { |cell| cell.class == Cell }
       end).to be(true)
+    end
+
+    it 'Should correctly generate assign live or death' do
+      expect(board.grid[0][0].alive).to be(true)
+      expect(board.grid[1][1].alive).to be(false)
+      expect(board.grid[2][2].alive).to be(false)
+      expect(board.grid[3][3].alive).to be(true)
+    end
+  end
+
+  context 'Should count the living neighbours of each cell' do
+    board1 = Board.new(small_seed)
+    board1.populate_grid
+    board1.set_living_neighbours
+
+    it 'Should correctly set the number' do
+      expect(board1.grid[0][0].living_neighbours).to eq(1)
+      expect(board1.grid[0][2].living_neighbours).to eq(2)
+      expect(board1.grid[1][1].living_neighbours).to eq(3)
     end
   end
 end
