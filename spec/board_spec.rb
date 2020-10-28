@@ -17,7 +17,7 @@ RSpec.describe Board do
 
   context 'Should generate an array of cells from the seed' do
     board.populate_grid
-    it 'Gridd should be an array of the same lenght as the seed' do
+    it 'Grid should be an array of the same lenght as the seed' do
       expect(board.grid).to be_an_instance_of(Array)
       expect(board.grid.length).to eq(seed.length)
       expect(board.grid[0].length).to eq(seed[0].length)
