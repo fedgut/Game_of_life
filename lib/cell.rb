@@ -1,8 +1,8 @@
 class Cell
   attr_reader :neighbours, :alive
 
-  def initialize(alive = false)
-    @alive = alive
+  def initialize(num)
+    @alive = num.positive? ? true : false
     @neighbours = {
       north: [-1, 0], north_east: [-1, 1],
       east: [0, 1], south_east: [1, 1],
