@@ -1,7 +1,7 @@
 require './lib/cell'
 
 RSpec.describe Cell do
-  cell = Cell.new(true)
+  cell = Cell.new(1)
   it 'Should generate an instance of the cell class' do
     expect(cell).to be_an_instance_of(Cell)
   end
