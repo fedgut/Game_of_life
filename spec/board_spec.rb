@@ -1,4 +1,5 @@
 require './lib/board'
+require './lib/cell'
 
 RSpec.describe Board do
   seed = [
@@ -23,7 +24,7 @@ RSpec.describe Board do
     end
 
     it 'Should be populated by cells' do
-      expect(board.each).to be_an_instance_of(Cell)
+      expect(board.grid.each).to be_an_instance_of(Cell)
     end
   end
 end
