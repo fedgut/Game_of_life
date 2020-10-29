@@ -1,4 +1,6 @@
+# The Cell class is responible for...
 class Cell
+  # controlling its own state, with external input from Board.
   attr_accessor :living_neighbours
   attr_reader :neighbours, :alive
 

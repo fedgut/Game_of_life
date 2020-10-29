@@ -1,6 +1,7 @@
 require './lib/cell'
-
+# The Board class is responsible of...
 class Board
+  # Handling the grid, passing information to the cell and receiving the cells state   
   attr_reader :grid
   def initialize(seed)
     @seed = seed
