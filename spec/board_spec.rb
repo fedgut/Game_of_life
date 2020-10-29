@@ -30,7 +30,7 @@ RSpec.describe Board do
     end
 
     it 'Should be populated by arrays of cells' do
-      expect(board.grid.all? { |sub_array| sub_array.class == Array}).to be(true)
+      expect(board.grid.all? { |sub_array| sub_array.class == Array }).to be(true)
       expect(board.grid.all? do |sub_array|
         sub_array.all? { |cell| cell.class == Cell }
       end).to be(true)
