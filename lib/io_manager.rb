@@ -51,4 +51,13 @@ class IOManager
     request_seed
     retry
   end
+
+  def handle_seed
+    request_seed
+    parse_seed
+    return if arr_is_valid?
+
+    puts "\n The provided array is not a square! please try again"
+    handle_seed
+  end
 end
