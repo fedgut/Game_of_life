@@ -18,6 +18,10 @@ class Cell
     @next_status = false
   end
 
+  def survives
+    @next_status = true if @alive
+  end
+
   def lives
     @next_status = true
   end
