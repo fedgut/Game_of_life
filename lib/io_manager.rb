@@ -40,4 +40,15 @@ class IOManager
       sub_array.length == @parsed_array.length
     end
   end
+
+  def parse_seed
+    array_of_strings = @seed.split(' ')
+    @parsed_array = array_of_strings.map { |sub_arr| p sub_arr.split('') }
+    @parsed_array
+  rescue StandardError => e
+    puts e.message
+    puts "\n Invalid Input, please try again"
+    request_seed
+    retry
+  end
 end
