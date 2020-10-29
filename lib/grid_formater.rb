@@ -1,12 +1,12 @@
 class GridFormater
-  def initialize(board)
-    @board = board
+  def initialize(grid)
+    @grid = grid
   end
 
-  def print
-    grid = @board.grid
+  def show
+    sleep 1
     system 'clear'
-    grid.each do |sub_array|
+    @grid.each do |sub_array|
       sub_array.each do |cell|
         print cell.alive ? '■' : '·'
         print ' '
