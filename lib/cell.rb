@@ -22,6 +22,12 @@ class Cell
     @next_status = true
   end
 
+  def calculate_next_generation
+    dies if living_neighbours < 2 || living_neighbours > 3
+    survives if living_neighbours == 2
+    lives if living_neighbours == 3
+  end
+
   def set_generation
     @alive = @next_status
     @living_neighbours = 0
