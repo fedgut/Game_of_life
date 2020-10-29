@@ -30,4 +30,13 @@ class Game
     obtain_input
   end
 
+  def create_board
+    @board = Board.new(@seed_manager.parsed_array)
+    @board.populate_grid
+  end
+
+  def create_grid_formater
+    @grid_formater = GridFormater.new(@board)
+  end
+
 end
