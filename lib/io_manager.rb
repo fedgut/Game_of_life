@@ -24,4 +24,12 @@ class IOManager
   def seed
     @seed = gets.chomp
   end
+
+  def validate_array_square(array)
+    return false unless array.all? do |sub_array|
+      sub_array.length == array.length
+    end
+
+    true
+  end
 end
