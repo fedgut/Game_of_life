@@ -12,7 +12,7 @@ RSpec.describe Board do
   small_seed = [
     [1, 0, 0],
     [0, 1, 1],
-    [0, 0, 1],
+    [0, 0, 1]
   ]
 
   board = Board.new(seed)
