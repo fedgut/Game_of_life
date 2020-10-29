@@ -45,5 +45,14 @@ class Game
     @board.set_next_gen
     @grid_formater.print
     @turn += 1
+    turn
+  end
+
+  def boot
+    greeetings
+    obtain_input
+    create_board
+    create_grid_formater
+    turn
   end
 end
