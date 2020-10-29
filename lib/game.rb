@@ -39,4 +39,11 @@ class Game
     @grid_formater = GridFormater.new(@board)
   end
 
+  def turn
+    @board.set_living_neighbours
+    @board.calculate_next_gen
+    @board.set_next_gen
+    @grid_formater.print
+    @turn += 1
+  end
 end
