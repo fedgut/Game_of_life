@@ -1,6 +1,6 @@
-require './board'
-require './grid_formater'
-require './seed_manager'
+require './lib/board'
+require './lib/grid_formater'
+require './lib/seed_manager'
 
 class Game
   def initialize
@@ -25,9 +25,7 @@ class Game
   def obtain_input
     @seed_manager.request_seed
     @seed_manager.parse_seed
-    return if @seed_manager.validate
-
-    obtain_input
+    @seed_manager.validate
   end
 
   def create_board
@@ -36,15 +34,13 @@ class Game
   end
 
   def create_grid_formater
-    @grid_formater = GridFormater.new(@board)
+    @grid_formater = GridFormater.new(@board.grid)
   end
 
   def turn
-    @board.set_living_neighbours
+    @grid_formater.show
     @board.calculate_next_gen
     @board.set_next_gen
-    @grid_formater.print
-    @turn += 1
     turn
   end
 
@@ -53,6 +49,6 @@ class Game
     obtain_input
     create_board
     create_grid_formater
-    turn
+    'Starting'
   end
 end
