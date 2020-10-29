@@ -21,5 +21,7 @@ class IOManager
     puts sugestion
   end
 
-
+  def seed
+    @seed = gets.chomp
+  end
 end
