@@ -4,9 +4,10 @@ require './lib/cell'
 # The IOManager class is responsible for...
 class IOManager
   # handling input and output
+  attr_reader :parsed_array
   def initialize
     @seed = ''
-    @board = ''
+    @parsed_array = ''
   end
 
   def greeetings
@@ -21,15 +22,22 @@ class IOManager
     puts sugestion
   end
 
-  def seed
+  def request_seed
     @seed = gets.chomp
+    return if seed_is_valid?
+
+    puts "\n String should be 0s and 1s"
+    request_seed
   end
 
-  def validate_array_square(array)
-    return false unless array.all? do |sub_array|
-      sub_array.length == array.length
-    end
+  def seed_is_valid?
+    regex = Regexp.new(/^[0-1]{1,}$/)
+    seed.match?(regex)
+  end
 
-    true
+  def arr_is_valid?
+    @parsed_array.all? do |sub_array|
+      sub_array.length == @parsed_array.length
+    end
   end
 end
