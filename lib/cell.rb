@@ -2,16 +2,10 @@
 class Cell
   # controlling its own state, with external input from Board.
   attr_accessor :living_neighbours
-  attr_reader :neighbours, :alive
+  attr_reader :alive
 
   def initialize(num)
     @alive = num.positive? ? true : false
-    @neighbours = {
-      north: [-1, 0], north_east: [-1, 1],
-      east: [0, 1], south_east: [1, 1],
-      south: [1, 0], south_west: [1, -1],
-      west: [0, -1], north_west: [-1, -1]
-    }
     @next_status = false
     @living_neighbours = 0
   end
@@ -35,7 +29,16 @@ class Cell
   end
 
   def set_generation
-    @alive = @next_status
     @living_neighbours = 0
+    @alive = @next_status
+  end
+
+  def neighbours
+    {
+      north: [-1, 0], north_east: [-1, 1],
+      east: [0, 1], south_east: [1, 1],
+      south: [1, 0], south_west: [1, -1],
+      west: [0, -1], north_west: [-1, -1]
+    }
   end
 end
