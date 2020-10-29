@@ -1,25 +1,11 @@
-require './lib/board'
-require './lib/cell'
-
 # The SeedManager class is responsible for...
 class SeedManager
   # requesting valid input
-  attr_reader :parsed_array
+  attr_reader :parsed_array, :parsed_array_valid
   def initialize
     @seed = ''
     @parsed_array = ''
-  end
-
-  def greeetings
-    greeting = '   Hello dear player! Please give me a seed!'
-    explanation = '   The seed must be a string representing a square bidimentional array of 0s and 1s'
-    explanation1 = '   For example, for a 3x3 seed, "001 110 101"'
-    sugestion = '   You can use some examples from the README!'
-
-    puts greeting
-    puts explanation
-    puts explanation1
-    puts sugestion
+    @parsed_array_valid = ''
   end
 
   def request_seed
@@ -45,5 +31,10 @@ class SeedManager
     @parsed_array.all? do |sub_array|
       sub_array.length == @parsed_array.length
     end
+  end
+
+  def validate
+    @parsed_array_valid = true if arr_is_valid? && seed_is_valid?
+    puts 'Please use valid input! (See README for help)' unless @parsed_array_valid
   end
 end
