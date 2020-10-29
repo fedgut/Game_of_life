@@ -31,4 +31,14 @@ class Board
       end
     end
   end
+
+  def calculate_next_gen
+    set_living_neighbours
+    @grid.each do |sub_array|
+      sub_array.each(&:calculate_next_generation)
+    end
+    @grid.each do |sub_array|
+      sub_array.each(&:set_generation)
+    end
+  end
 end
