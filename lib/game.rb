@@ -21,4 +21,13 @@ class Game
     puts explanation1
     puts sugestion
   end
+
+  def obtain_input
+    @seed_manager.request_seed
+    @seed_manager.parse_seed
+    return if @seed_manager.validate
+
+    obtain_input
+  end
+
 end
