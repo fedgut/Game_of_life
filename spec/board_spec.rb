@@ -36,7 +36,7 @@ RSpec.describe Board do
       end).to be(true)
     end
 
-    it 'Should correctly generate assign live or death' do
+    it 'Should correctly assign live or death status' do
       expect(board.grid[0][0].alive).to be(true)
       expect(board.grid[1][1].alive).to be(false)
       expect(board.grid[2][2].alive).to be(false)
