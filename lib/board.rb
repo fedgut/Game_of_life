@@ -1,7 +1,7 @@
 require './lib/cell'
 # The Board class is responsible of...
 class Board
-  # Handling the grid, passing information to the cell and receiving the cells state   
+  # Handling the grid, passing information to the cell and receiving the cells state
   attr_reader :grid
   def initialize(seed)
     @seed = seed
@@ -10,8 +10,8 @@ class Board
 
   def populate_grid
     @seed.each do |sub_array|
-      inner_array = sub_array.map do |item|
-        Cell.new(item)
+      inner_array = sub_array.map do |number|
+        Cell.new(number)
       end
       @grid.push(inner_array)
     end
@@ -21,13 +21,15 @@ class Board
     @grid.each_with_index do |sub_array, current_row|
       sub_array.each_with_index do |cell, current_col|
         cell.neighbours.each_value do |offset|
-          # offset refers to the cells neighbours coordinates (North [1][1], south[-1][-1]...)
-          next if (current_row + offset[0]).negative? ||
-                  (current_row + offset[0]) >= grid.length
-          next if (current_col + offset[1]).negative? ||
-                  (current_col + offset[1]) >= grid[current_row].length
+          # offset represents the cells neighbours coordinates (North [1][1], south[-1][-1]...)
+          row_offset = current_row + offset[0]
+          column_offset = current_col + offset[1]
+          next if row_offset.negative? ||
+                  row_offset >= grid.length
+          next if column_offset.negative? ||
+                  column_offset >= grid[current_row].length
 
-          cell.living_neighbours += 1 if grid[current_row + offset[0]][current_col + offset[1]].alive
+          cell.living_neighbours += 1 if grid[row_offset][column_offset].alive
         end
       end
     end
@@ -38,6 +40,9 @@ class Board
     @grid.each do |sub_array|
       sub_array.each(&:calculate_next_generation)
     end
+  end
+
+  def set_next_gen
     @grid.each do |sub_array|
       sub_array.each(&:set_generation)
     end
