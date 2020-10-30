@@ -49,9 +49,6 @@ class Game
     obtain_input
     create_board
     create_grid_formater
-    return 'Aborting' unless @seed.manager.validate
-
-    puts 'Starting'
     turn
   end
 end
