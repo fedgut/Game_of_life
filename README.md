@@ -10,7 +10,7 @@ of Life by creating an initial configuration and observing how it evolves.
  ```irb bin/start.rb```
 
 ## Don't know how to do so? 
-  [Clonging from github](https://www.howtogeek.com/451360/how-to-clone-a-github-repository/)
+  [Cloning from github](https://www.howtogeek.com/451360/how-to-clone-a-github-repository/)
 
   [Terminal](https://blog.galvanize.com/how-to-use-the-terminal-command-line/)
 
