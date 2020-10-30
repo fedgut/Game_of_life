@@ -51,6 +51,7 @@ class Game
     create_grid_formater
     return 'Aborting' unless @seed.manager.validate
 
-    'Starting'
+    puts 'Starting'
+    turn
   end
 end
